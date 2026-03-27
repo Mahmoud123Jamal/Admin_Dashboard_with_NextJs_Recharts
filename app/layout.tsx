@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Dashboard",
-  description: "Dashboard using next.js ",
+  description: "Dashboard using next.js, recharts.js, framer motion ",
 };
 
 export default function RootLayout({

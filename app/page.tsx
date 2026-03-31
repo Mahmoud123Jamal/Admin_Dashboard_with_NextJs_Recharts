@@ -1,9 +1,9 @@
-import SideBar from "@/components/SideBar";
+import Overview from "./overview/page";
 
 export default function Home() {
   return (
     <div>
-      <SideBar />
+      <Overview />
     </div>
   );
 }

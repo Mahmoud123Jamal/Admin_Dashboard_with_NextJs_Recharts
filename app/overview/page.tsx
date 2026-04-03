@@ -3,6 +3,7 @@ import SalesOverview from "@/components/SalesOverviewChart";
 import StateCard from "@/components/StateCard";
 import { DollarSign, ShoppingBag, SquareActivity, Users } from "lucide-react";
 import CategoryChart from "../../components/CategoryChart";
+import OrderDistributionChart from "@/components/OrderDistributionChart";
 
 function Overview() {
   return (
@@ -17,6 +18,7 @@ function Overview() {
         <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2">
           <SalesOverview />
           <CategoryChart />
+          <OrderDistributionChart />
         </div>
       </main>
     </div>

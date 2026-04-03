@@ -4,6 +4,7 @@ import StateCard from "@/components/StateCard";
 import { DollarSign, ShoppingBag, SquareActivity, Users } from "lucide-react";
 import CategoryChart from "../../components/CategoryChart";
 import OrderDistributionChart from "@/components/OrderDistributionChart";
+import ProductPerformanceChart from "@/components/ProductPerformanceChart";
 
 function Overview() {
   return (
@@ -19,6 +20,7 @@ function Overview() {
           <SalesOverview />
           <CategoryChart />
           <OrderDistributionChart />
+          <ProductPerformanceChart />
         </div>
       </main>
     </div>

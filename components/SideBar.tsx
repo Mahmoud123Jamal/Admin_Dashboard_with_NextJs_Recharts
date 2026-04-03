@@ -5,6 +5,7 @@ import {
   House,
   Info,
   Mail,
+  Menu,
   Settings,
   ShoppingBag,
   ShoppingCart,
@@ -35,6 +36,7 @@ function SideBar() {
   };
 
   const [sideBarItems, setSideBarItems] = useState<SidebarItem[]>([]);
+  const [isExpanded, setIsExpanded] = useState(true);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -47,11 +49,16 @@ function SideBar() {
   }, []);
 
   return (
-    <aside className="w-64 h-screen bg-[#1e1e1e] text-white  shadow-2xl mx-4 md:mx-6 lg:mx-8  mb-2 rounded-lg flex flex-col border-r border-gray-800">
-      <div className="p-6">
-        <h1 className="text-xl font-bold tracking-tight text-white">
-          Admin Dashboard
-        </h1>
+    <aside
+      className={`h-screen bg-[#1e1e1e] text-white flex flex-col border-r border-gray-800 shrink-0 transition-all duration-300 ${isExpanded ? "w-20 sm:w-64" : "w-20"}`}
+    >
+      <div
+        className={`p-6 mb-2 flex ${isExpanded ? "justify-center sm:justify-start" : "justify-center"}`}
+      >
+        <Menu
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-6 h-6 text-gray-200 cursor-pointer hover:text-white transition-colors"
+        />
       </div>
 
       <nav className="flex-1 px-3">
@@ -65,22 +72,33 @@ function SideBar() {
                 <Link
                   href={item.href || "#"}
                   className={`
-                    flex items-center space-x-3 p-3 rounded-lg transition-all duration-200
+                    flex items-center p-3 mx-2 rounded-lg transition-all duration-200
+                    ${isExpanded ? "justify-center sm:justify-start space-x-0 sm:space-x-4" : "justify-center space-x-0"}
                     ${
                       isActive
-                        ? "bg-blue-600 text-white shadow-lg shadow-blue-900/20"
-                        : "hover:bg-gray-800 text-gray-400 hover:text-white"
+                        ? "bg-[#2a2a2a] text-white"
+                        : "hover:bg-gray-800/50 text-gray-400 hover:text-white"
                     }
                   `}
+                  title={
+                    !isExpanded ||
+                    (typeof window !== "undefined" && window.innerWidth < 640)
+                      ? item.name
+                      : undefined
+                  }
                 >
                   {IconComponent ? (
                     <IconComponent
-                      className={`w-5 h-5 ${isActive ? "text-white" : "text-gray-400"}`}
+                      className={`w-5 h-5 shrink-0 ${isActive ? "text-white" : "text-gray-400"}`}
                     />
                   ) : (
-                    <div className="w-5 h-5 bg-gray-700 rounded-full" />
+                    <div className="w-5 h-5 shrink-0 bg-gray-700 rounded-full" />
                   )}
-                  <span className="font-medium text-sm">{item.name}</span>
+                  <span
+                    className={`font-medium text-sm whitespace-nowrap overflow-hidden ${isExpanded ? "hidden sm:block" : "hidden"}`}
+                  >
+                    {item.name}
+                  </span>
                 </Link>
               </li>
             );

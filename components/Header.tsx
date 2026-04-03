@@ -4,7 +4,7 @@ import admin from "../public/images/admin.jpg";
 import { Bell } from "lucide-react";
 function Header() {
   return (
-    <header className="bg-[#1e1e1e] text-white  shadow-2xl mx-4 md:mx-6 lg:mx-8 mt-4 mb-2 rounded-lg">
+    <header className="bg-[#1e1e1e] text-white  shadow-2xl mx-4 md:mx-6 lg:mx-8 mt-4 mb-2 rounded-lg relative">
       <div className="max-w-7xl mx-auto p-4 sm:px-6 flex items-center justify-between">
         <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-100">
           Dashboard
@@ -15,7 +15,7 @@ function Header() {
             alt="Country flag"
             width={25}
             height={18}
-            className="rounded-full shadow-lg"
+            className="rounded-sm"
           />
           <div className="relative">
             <Bell className="size-5 text-gray-300 cursor-pointer hover:text-white " />
@@ -29,7 +29,7 @@ function Header() {
               className="rounded-full border border-gray-200"
             />
             <span className="hidden sm:block font-medium text-gray-100">
-              mahmoud
+              John Mark
             </span>
           </div>
         </div>
